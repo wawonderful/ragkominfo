@@ -1,4 +1,0 @@
-Database Name: sekarang  
-Chunk Size: 1101  
-Chunk Overlap: 401  
-Location: database\sekarang

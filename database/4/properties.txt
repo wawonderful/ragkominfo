@@ -1,4 +1,0 @@
-Database Name: 4  
-Chunk Size: 1301  
-Chunk Overlap: 401  
-Location: database\4
