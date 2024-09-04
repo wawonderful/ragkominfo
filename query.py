@@ -6,9 +6,9 @@ from langchain.prompts import ChatPromptTemplate
 import openai 
 from dotenv import load_dotenv
 import os
+import streamlit as st
 
-os.environ['OPENAI_API_KEY'] = 'sk-X7j5lfY296Z8RennPYXrfpl42uyW2gV6001JQkhzt8T3BlbkFJjEFva2F-Dg2GdIGY41UEoLTLp5keuywBo5zF0eqhcA'
-openai.api_key = os.environ['OPENAI_API_KEY']
+openai.api_key = st.secrets["OPENAI_API_KEY"]
 
 PROMPT_TEMPLATE = """
 Jawablah pertanyaan berdasarkan konteks berikut ini:

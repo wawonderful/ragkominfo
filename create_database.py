@@ -7,14 +7,14 @@ import openai
 from dotenv import load_dotenv
 import os
 import shutil
+import streamlit as st
 
 # Load environment variables. Assumes that project contains .env file with API keys
 load_dotenv()
 #---- Set OpenAI API key 
 # Change environment variable name from "OPENAI_API_KEY" to the name given in 
 # your .env file.
-os.environ['OPENAI_API_KEY'] = 'sk-X7j5lfY296Z8RennPYXrfpl42uyW2gV6001JQkhzt8T3BlbkFJjEFva2F-Dg2GdIGY41UEoLTLp5keuywBo5zF0eqhcA'
-openai.api_key = os.environ['OPENAI_API_KEY']
+openai.api_key = st.secrets["OPENAI_API_KEY"]
 
 DATA_PATH = "data"
 

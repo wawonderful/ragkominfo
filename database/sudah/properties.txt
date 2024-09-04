@@ -1,0 +1,4 @@
+Database Name: sudah  
+Chunk Size: 3001  
+Chunk Overlap: 500  
+Location: database\sudah
