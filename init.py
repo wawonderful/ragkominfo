@@ -10,10 +10,13 @@ if "openai_api" not in st.session_state:
         password = st.text_input("OPEN AI API", type="password")
         submitapi_btn = st.form_submit_button('OK')
     if submitapi_btn:
-        if include.check_openai_api_key(password):
+        with st.spinner("Checking OpenAI API..."):
+            valid_openai_api_key = include.check_openai_api_key(password)
+            time.sleep(1)
+        if valid_openai_api_key:
             st.success("API Benar!")
             st.session_state.openai_api = password
-            time.sleep(3)
+            time.sleep(2)
             st.switch_page("pages/Query.py")
         else:
             st.error("API Salah!")

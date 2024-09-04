@@ -22,10 +22,11 @@ else:
             elif selected == "Create Database":
                 pass
             elif selected == "PDF Viewer":
-                st.switch_page("pages/PDF Viewer.pdf")
+                st.switch_page("pages/PDF Viewer.py")
 
         DATABASE_PATH = "database"
         DATA_PATH = "data"
+        st.title("RAG KOMINFO")
         st.header("Create Database")
         with st.form("create_database_form", clear_on_submit=True):
             form_database_name = st.text_input(label="Database Name", value="", max_chars=25, key="zzz")
@@ -39,10 +40,11 @@ else:
                 form_warning = "Error, database with the same name exists"
                 st.error(form_warning)
             else:
-                include.generate_data_store(form_database_name, form_chunk_size, form_chunk_overlap, chroma_path)
+                with st.spinner(f'Creating {form_database_name}...'):
+                    include.generate_data_store(form_database_name, form_chunk_size, form_chunk_overlap, chroma_path)
                 form_warning = f"Database Successfully Created  \nDatabase Name: {form_database_name}  \nChunk Overlap: {form_chunk_overlap}  \nLocation: {chroma_path}"
-                st.warning(form_warning)
+                st.success(form_warning)
     else:
         st.error("API Error!  \nRedirecting to Initialize OpenAI API Page")
-        time.sleep(6)
+        time.sleep(3)
         st.switch_page("init.py")

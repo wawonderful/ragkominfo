@@ -22,7 +22,7 @@ else:
             elif selected == "Create Database":
                 st.switch_page("pages/Create Database.py")
             elif selected == "PDF Viewer":
-                st.switch_page("pages/PDF Viewer")
+                st.switch_page("pages/PDF Viewer.py")
         def query_manager(prompt, database_path):
             hasil_kueri = include.kueri(prompt, database_path)
             if hasil_kueri == None:
@@ -56,9 +56,10 @@ else:
         BASE_DATABASE_PATH = "database/"
         db_arr = os.listdir(BASE_DATABASE_PATH)
 
+        st.title("RAG KOMINFO")
         st.header("Query")
         db_option = st.selectbox(
-            "Database",
+            "Select Database",
             (db_arr),
         )
         DATABASE_PATH = os.path.join(BASE_DATABASE_PATH, db_option)
@@ -89,5 +90,5 @@ else:
             st.session_state.messages.append({"role": "assistant", "content": response})
     else:
         st.error("API Error!  \nRedirecting to Initialize OpenAI API Page")
-        time.sleep(6)
-        st.switch_page("pages/Create Database.py")
+        time.sleep(3)
+        st.switch_page("init.py")
