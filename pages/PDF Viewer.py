@@ -59,18 +59,21 @@ else:
             def pdf_navigator(pdf_binary, current_page):
                 page_binary = get_page_binary(pdf_binary, current_page)
                 pdf_viewer(page_binary)
-
+            
                 # Navigation buttons
-                col1, col2, col3 = st.columns(3)
+                col1, col2 = st.columns(2)
                 with col1:
                     if st.button("Previous Page") and current_page > 0:
                         current_page -= 1
                 with col2:
-                    st.write(f'Page: {st.session_state.current_page + 1}')
-                with col3:
                     if st.button("Next Page") and current_page < total_pages - 1:
                         current_page += 1
-
+            
+                # "Go to Page" button and input
+                go_to_page = st.number_input("Go to Page", min_value=1, max_value=total_pages, value=current_page+1, step=1)
+                if st.button("Go"):
+                    current_page = go_to_page - 1  # Adjust because pages are 0-indexed internally
+            
                 return current_page
 
             # Load PDF to get total number of pages
